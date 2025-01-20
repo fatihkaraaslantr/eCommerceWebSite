@@ -5,6 +5,7 @@ import {
   calculateCartTotal,
   getFromLocalStorage,
   saveToLocalStorage,
+  updateCartIcon,
 } from "./utils.js";
 
 let cart = getFromLocalStorage();
@@ -38,6 +39,8 @@ const addToCart = (e, products) => {
     setTimeout(() => {
       e.target.textContent = "Add to cart";
     }, 2000);
+
+    updateCartIcon(cart);
   }
 };
 
@@ -52,6 +55,7 @@ const removeFromCart = (e) => {
 
   //sepet toplamını rende et
   displayCartTotal();
+  updateCartIcon(cart);
 };
 
 //sepetteki ürün miktarını güncelle...
@@ -66,6 +70,7 @@ const onQuantityChange = (e) => {
 
     saveToLocalStorage(cart);
     displayCartTotal();
+    updateCartIcon(cart);
   }
 };
 
